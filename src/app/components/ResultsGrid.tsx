@@ -22,20 +22,7 @@ export default function ResultsGrid({ cards, categories }: ResultsGridProps) {
     })
 
     useEffect(() => {
-        applyFilter()
-    }, [filters])
-
-    function handleCheckboxChange(category: 'mealTypes' | 'cuisines', value: string) {
-        setFilters(prev => {
-            const updated = prev[category].includes(value)
-                ? prev[category].filter(v => (v !== value))
-                : [...prev[category], value]
-            const newFilters = { ...prev, [category]: updated }
-            return newFilters
-        })
-    }
-
-    function applyFilter() {
+        function applyFilter() {
         let finalCards = cards
         const { mealTypes, cuisines } = filters
         if (mealTypes.length > 0) {
@@ -46,9 +33,20 @@ export default function ResultsGrid({ cards, categories }: ResultsGridProps) {
         }
         setResults(finalCards)      
     }
+    console.log("effect")
+        applyFilter()
+        
+    }, [filters,cards])
 
-   
-
+    function handleCheckboxChange(category: 'mealTypes' | 'cuisines', value: string) {
+        setFilters(prev => {
+            const updated = prev[category].includes(value)
+                ? prev[category].filter(v => (v !== value))
+                : [...prev[category], value]
+            const newFilters = { ...prev, [category]: updated }
+            return newFilters
+        })
+    }
 
     return (
         <div className="flex w-full  flex-col md:flex-row">
