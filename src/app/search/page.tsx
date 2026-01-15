@@ -27,7 +27,7 @@ export default async function Page({ searchParams }: searchParamsProps) {
             throw new Error(error?.message)
         }
         if (data) {
-            cards = data.map((recipe, index) => ({
+            cards = data.map((recipe) => ({
                 id: recipe.id,
                 title: recipe.name,
                 image: recipe.image,
@@ -44,9 +44,9 @@ export default async function Page({ searchParams }: searchParamsProps) {
     catch (err) {
         console.error(err)
     }
-    let mealTypes = cards.map((card) => (card.mealTypes)).flat(1)
-    let cuisines = cards.map((card) => (card.cuisines)).flat(1)
-    let categories = {
+    const mealTypes = cards.map((card) => (card.mealTypes)).flat(1)
+    const cuisines = cards.map((card) => (card.cuisines)).flat(1)
+    const categories = {
         mealTypes: [... new Set(mealTypes)],
         cuisines: [... new Set(cuisines)]
     }

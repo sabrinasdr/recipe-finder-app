@@ -14,7 +14,7 @@ type SidebarProps = {
 export default function Sidebar({ categories, onFilterChange, filters, setFilters }: SidebarProps) {
     const { cuisines, mealTypes } = categories
     function resetFilters() {
-        setFilters((prev) => ({ mealTypes: [], cuisines: [] }))
+        setFilters(() => ({ mealTypes: [], cuisines: [] }))
     }
 
     return (

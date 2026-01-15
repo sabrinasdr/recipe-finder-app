@@ -13,7 +13,7 @@ export async function getVeganRecipes() {
       throw new Error(error?.message)
     }
     if (data) {
-      cards = data.map((recipe, index) => ({
+      cards = data.map((recipe) => ({
         id: recipe.id,
         title: recipe.name,
         image: recipe.image,
@@ -45,7 +45,7 @@ export async function getVegetarianRecipes() {
       throw new Error(error?.message)
     }
     if (data) {
-      cards = data.map((recipe, index) => ({
+      cards = data.map((recipe) => ({
         id: recipe.id,
         title: recipe.name,
         image: recipe.image,
@@ -78,7 +78,7 @@ export async function getDairyFreeRecipes() {
     }
 
     if (data) {
-      cards = data.map((recipe, index) => ({
+      cards = data.map((recipe) => ({
         id: recipe.id,
         title: recipe.name,
         image: recipe.image,
@@ -111,7 +111,7 @@ export async function getGlutenFreeRecipes() {
       throw new Error(error?.message)
     }
     if (data) {
-      cards = data.map((recipe, index) => ({
+      cards = data.map((recipe) => ({
         id: recipe.id,
         title: recipe.name,
         image: recipe.image,
@@ -144,7 +144,7 @@ export async function getTopRecipes() {
       throw new Error(error?.message)
     }
     if (data) {
-      cards = data.map((recipe, index) => ({
+      cards = data.map((recipe) => ({
         id: recipe.id,
         title: recipe.name,
         image: recipe.image,
@@ -180,7 +180,7 @@ export async function searchRecipes(query: string) {
     throw new Error(error?.message)
   }
   if (data) {
-    cards = data.map((recipe, index) => ({
+    cards = data.map((recipe) => ({
       id: recipe.id,
       title: recipe.name,
       image: recipe.image,

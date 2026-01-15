@@ -1,3 +1,3 @@
-export function containsAny(arr1:any[],arr2:any[]){
+export function containsAny<T>(arr1:Array<T>,arr2:Array<T>){
     return arr1.some(item => arr2.includes(item))
 }
