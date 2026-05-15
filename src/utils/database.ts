@@ -1,6 +1,7 @@
 import { supabase } from "@/app/supabase-client";
 import { RecipeCard } from "@/app/types";
 
+
 export async function getVeganRecipes() {
   try {
     let cards
@@ -204,13 +205,17 @@ export async function getRecipeIngredients(id: number) {
   if (error) {
     throw new Error(error?.message)
   }
-  const res = data[0]?.ingredient_sections
-  const obj = JSON.parse(res)
 
-  return obj
+  const res = data[0].ingredient_sections
+  console.log(res)
+  const fixed = res
+  .replace(/None/g, "null")
+  .replace(/'/g, '"')
+  const finalResult = JSON.parse(fixed)
+  return finalResult
+ 
 
 }
-
 export async function getRecipeInstructions(id: number) {
   const { data, error } = await supabase
     .from('recipes_description')
@@ -219,12 +224,14 @@ export async function getRecipeInstructions(id: number) {
   if (error) {
     throw new Error(error?.message)
   }
-  const res = data[0].instructions
-  const obj = JSON.parse(res)
-
-  const array = obj.map((object:{display_text:string}) => object.display_text)
-  return array
+  
+   const res = data[0].instructions
+   const fixed = res.replace(/'/g, '"');
+   const array = JSON.parse(fixed)
+   const finalResult =array.map((object:{display_text:string}) => object.display_text)
+  return finalResult
 }
+
 
 
 
