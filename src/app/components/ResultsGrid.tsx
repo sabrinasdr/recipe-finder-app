@@ -33,7 +33,7 @@ export default function ResultsGrid({ cards, categories }: ResultsGridProps) {
         }
         setResults(finalCards)      
     }
-    console.log("effect")
+    
         applyFilter()
         
     }, [filters,cards])
